@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cyt.Dao.AnnDao">
+
+    <insert id="InsetHtml">
+        INSERT INTO `announcement` (`announcement`,`start`) values (#{announcement},1)
+    </insert>
+    <select id="getHtml" resultType="org.cyt.entity.Announcement.html">
+        SELECT * from announcement where announcement_id = (select max(announcement_id) from announcement)
+        <if test="start != null">AND start=#{start}</if>
+    </select>
+    <select id="SelectAll" resultType="org.cyt.entity.Announcement.html">
+        select * from announcement;
+    </select>
+</mapper>
