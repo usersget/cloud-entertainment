@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.cyt.dao.UserDao">
+<!--    数据库添加-->
+    <insert id="insertUser" parameterType="org.cyt.entity.User.User">
+        Insert into e_user values (#{username},#{name},#{email},#{password},#{userid},#{registration},#{city},#{usid})
+    </insert>
+
+    <select id="selectUser" resultType="org.cyt.entity.User.User">
+        select
+            <choose>
+                <when test="username!=null or name!=null or password !=null or email != null">
+                    userid
+                    <if test="username!=null">,`username`</if>
+                    <if test="name!=null">,`name`</if>
+                    <if test="password !=null">,`password`</if>
+                </when>
+                <otherwise>*</otherwise>
+            </choose>
+            from e_user
+            where username = #{username}
+    </select>
+    <select id="numberUser" resultType="java.lang.Integer">
+        select count(*) from e_user where username=#{username}
+    </select>
+</mapper>

@@ -1,0 +1,28 @@
+server:
+  port: 8100
+spring:
+  datasource:
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/entertainment?useSSL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1234
+  application:
+    name: euser
+#  cloud:
+#    nacos:
+#      server-addr: localhost:8848  #nacos服务端地址
+
+
+mybatis:
+  mapper-locations: classpath:/mybatis/*.xml
+
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:10086/eureka/
+#
+##负载均衡配置
+#e_user: #要做配置的微服务名称
+#  ribbon:
+#    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule

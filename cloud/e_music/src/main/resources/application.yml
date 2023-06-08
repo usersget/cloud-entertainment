@@ -1,0 +1,22 @@
+server:
+  port: 8101
+spring:
+  mvc:
+    static-path-pattern: /**
+  datasource:
+    type: com.mysql.cj.jdbc.MysqlConnectionPoolDataSource
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/entertainment?useSSL=true&useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: root
+    password: 1234
+  application:
+    name: e_music
+mybatis:
+  mapper-locations: classpath:/mybatis/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+#eureka:
+#  client:
+#    service-url:
+#      defaultZone: http://127.0.0.1:10086/eureka/
+
